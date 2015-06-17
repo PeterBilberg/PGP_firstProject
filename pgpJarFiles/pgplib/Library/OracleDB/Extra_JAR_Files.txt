@@ -1,0 +1,6 @@
+-------------------------------------
+* DidiSoft OpenPGP Library for Java *
+build for use in Oracle Database 11 and above depends on the following JAR files that must also be downloaded:
+-------------------------------------
+http://www.bouncycastle.org/archive/151/bcpg-jdk13-151.jar
+http://www.bouncycastle.org/archive/151/jce-jdk13-151.jar

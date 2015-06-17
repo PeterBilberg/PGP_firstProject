@@ -1,0 +1,801 @@
+*******************************************************
+
+ OpenPGP Library for Java Release History
+ Copyright (c) 2006-2015 DidiSoft Ltd.
+
+*******************************************************
+
+ [*] : Bug
+ [+] : New
+ [-] : Removed
+ [!] : Modification
+
+HISTORY:
+--------
+
+ Version 3.0.0.1
+ Release date: 12 February 2015
+
+ [*] KeyStore.generateKeyPair - key preferences were missing (like expiration time, preferred algorithms, etc.)
+
+
+ Version 3.0.0
+ Release date: 23 January 2015
+
+ [!] The Library has been made independant from Java Cryptography Extensions and 
+     now there is no need for the Unlimited JCE installation in order the library to work.
+
+
+ Version 2.7.0.4
+ Release date: 23 December 2014
+
+ Package com.didisoft.pgp.net
+ [+] HKPClient.getKeysByUserId - retrieves all keys with matching User Id
+
+
+ Version 2.7.0.3
+ Release date: 06 November 2014
+
+ Package com.didisoft.pgp
+ [!] KeyStore - added log events for key generation, import and deletion operations
+
+
+ Version 2.7.0.2
+ Release date: 22 October 2014
+
+ Package com.didisoft.pgp
+ [!] PGPKeyPair - constructors now also accept keys as ASCII armored strings 
+ 
+ Package com.didisoft.pgp.inspect
+ [!] PGPInspectLib.isSignedOnly(String) - now also accept data as ASCII armored string
+ [!] PGPInspectLib.isPublicKeyEncrypted(String) - now also accept data as ASCII armored string
+ [!] PGPInspectLib.listEncryptionKeyIds - now also lists the encryption key Id's of public and private keys
+
+
+ Version 2.7.0.1
+ Release date: 15 October 2014
+
+ [+] New JAR file ships with the library in sub folder \Library\Mail\pgplib-mail-2.7.0.jar
+ [+] The new JAR file exposes a new package com.didisoft.pgp.mail offering PGP/MIME functionality
+ 
+
+ Version 2.7.0
+ Release date: 6 October 2014
+
+ [!] The library was migrated to BouncyCastle version 1.51, 
+     for projects that already depend on lower versions of BouncyCastle a separate JAR files are also distributed.
+ [!] The library has been modified in order to allow usage in Oracle DB 11+ for writing Java stored procedures.
+ [!] PGPLib - all methods that accept keys as file name location parameter of type String now also accept keys as ASCII armored strings
+ [+] PGPLib.signString - methods for signing string messages
+ [*] KeyPairInformation.getKeyExpirationTime() - now counts also the expiration seconds.
+
+
+ Version 2.6.6.6
+ Release date: 25 August 2014
+
+ Package com.didisoft.pgp
+ [*] KeyStore.changeUserId - was erasing the key expiration time. Now it is preserved.
+
+
+ Version 2.6.6.5
+ Release date August 1st 2014
+
+ Package com.didisoft.pgp
+ [+] PGPLib.setOverrideKeyAlgorithmPreferences(boolean) - sets should the algorithms choosed with 
+     setCompression, setCypher, setHash override the used key preferences.
+ [+] PGPLib.isOverrideKeyAlgorithmPreferences() - returns will the algorithms choosed with 
+     setCompression, setCypher, setHash override the used key preferences.
+
+
+ Version 2.6.6.4
+ Release date July 16th 2014
+
+ Package com.didisoft.pgp
+ [+] KeyStore.addSaveListener(IKeyStoreSaveListener) - listener for event triggered on key store state change
+ [+] KeyStore.addSearchListener(IKeyStoreSearchListener) - listener for events fired on key search in the key store
+ 
+ [+] Package com.didisoft.pgp.events
+ [+] IKeyStoreSaveListener - listener interface for key store state changes
+ [+] IKeyStoreSearchListener - listener interface for key store key search operations
+
+
+ Version 2.6.6.3
+ Release date June 6th 2014
+
+ Package com.didisoft.pgp
+ [*] PGPLib.decryptFile - added support for recovering from error "premature end of stream in PartialInputStream"
+ [*] PGPLib.decryptString - added support for recovering from error "premature end of stream in PartialInputStream"
+ [*] PGPLib.decryptStream - added support for recovering from error "premature end of stream in PartialInputStream"
+ 
+
+ Version 2.6.6.2
+ Release date May 28 2014
+
+ Package com.didisoft.pgp
+ [!] PGPLib.decryptFileTo(..) in conjunction with PGPLib.setExtractTarFiles(false) can handle .pgp archives with no internal file name information and extract them into a file with name composed from the input file name but without the .pgp extension.
+
+
+ Version 2.6.6.1
+ Release date May 26 2014
+
+ Package com.didisoft.pgp
+ [+] PGPLib.isExtractTarFiles() - is the library set to extract encrypted TAR files
+ [+] PGPLib.setExtractTarFiles(boolean) - sets should the library extract encrypted TAR files with the methods that handle multiple file archives
+
+
+ Version 2.6.6.0
+ Release date May 12 2014
+
+ BACKWARD COMPATIBILITY NOTICE: 
+ Output streams are now left open. You will have to explitily close them!
+
+ [!] PGPLib.encryptStream - the encrypted output stream is left open. Now the caller is responsible for closing it.
+ [!] PGPLib.encryptStreamPBE - the encrypted output stream is left open. Now the caller is responsible for closing it.
+ [!] PGPLib.signStream - the signed output stream is left open. Now the caller is responsible for closing it. 
+ [!] PGPLib.signStreamVersion3 - the signed output stream is left open. Now the caller is responsible for closing it.
+ [!] PGPLib.signAndEncryptStream - the encrypted output stream is left open. Now the caller is responsible for closing it.
+ [!] PGPLib.signAndEncryptStreamVersion3 - the encrypted output stream is left open. Now the caller is responsible for closing it.
+
+ (NEW!) PGP 2.x compatibility (RFC 1991)
+
+ [+] PGPLib.pgp.setPgp2Compatible(true)/isPgp2Compatible() - methods that control compatibility of the produced .pgp archives with the ancient PGP 2.x systems.
+
+ KeyStore posibility to customize the type of self sertification of OpenPGP keys 
+ [+] KeyStore.getDefaultKeyCertificationType() - returns the default key certification type used for newly created keys
+ [+] KeyStore.setDefaultKeyCertificationType - sets the default key certification type for newly created keys
+ [+] KeyStore.setKeyCertificationType - changes a key self certification type to a specified value
+
+
+
+ Version 2.6.5.3
+ Release date April 28 2014
+
+ Package com.didisoft.pgp	
+ [+] PGPLib.getDebugLevel/setDebuglevel - methods to control the verbose debug log level 
+ [+] KeyStore.clearKeyExpirationTime - methods to clear the expiration time of a public key
+ [+] KeyStore.setKeyExpirationTime - methods to set the expiration time of a public key
+
+
+ Version 2.6.5.2
+ Release date March 21 2014
+
+ Package com.didisoft.pgp
+ [*] KeyStore.changePrivateKeyPassword - the change was nor reflected in the internal list of KeyPairInformation objects 
+
+
+ Version 2.6.5.1
+ Release date March 17 2014
+
+ Package com.didisoft.pgp.net
+ [+] HKPClient - constructor without port (HTTP 80 by default)
+ [*] LDAPClient.submitKey - fixed case when the key does not exist on the server 
+ (in the first version it was only modifying the key).
+ 
+
+ Version 2.6.5.0
+ Release date March 06 2014
+
+ New package com.didisoft.pgp.net
+ [+] LDAPClient - provides access to LDAP OpenPGP key servers (e.g. Symantec Encryption Management Server/PGP Universal Server/, OpenLDAP with pgp schema)
+ [+] HKPClient - provides access to HKP (Horowitz key protocol) OpenPGP key servers (e.g. pgp.mit.edu)
+ 
+ Package com.didisoft.pgp
+ [*] KeyStore.changePrivateKeyPassword - the keystore state wasn't persisted
+ [+] KeyPairInformation.isValidForever() - returns true if the key has no expiration date
+ [+] PGPLib.signAndEncryptFile - overloaded version for multiple recipients
+ [+] PGPLib.signAndEncryptStream - overloaded version for multiple recipients
+
+
+ Version 2.6.4.12
+ Release date March 02 2014
+
+ [+] Library/GoogleAppEngine/ - version of the library JAR files prepared for Google AppEngine (GAE)
+
+
+ Version 2.6.4.11
+ Release date February 18 2014
+
+ Changes in package com.didisoft.pgp
+ [+] PGPLib.encryptString - overloaded methods that accept key in a KeyStore
+ [+] PGPLib.decryptString - overloaded methods that accept key in a KeyStore
+
+
+ Version 2.6.4.10
+ Release date February 01 2014
+
+ Changes in package com.didisoft.pgp
+ [+] PGPLib.encryptString - overloaded methods that accept key as input stream
+ [+] PGPLib.decryptString - overloaded methods that accept key as input stream
+
+
+ Version 2.6.4.9
+ Release date January 30 2014
+
+ Changes in package com.didisoft.pgp
+ [+] PGPLib.encryptStringPBE - method for password encrypting a string message
+ [+] PGPLib.decryptStreamPBE - method for decrypting a password encrypted Stream
+ [+] PGPLib.decryptStringPBE - method for decrypting a password encrypted string message
+
+
+ Version 2.6.4.8
+ Release date January 30 2014
+
+ Changes in package com.didisoft.pgp
+ [+] PGPLib.encryptString - methods for encrypting a string message
+ [+] PGPLib.decryptString - methods for decrypting a string message
+ [+] KeyPairInformation.getExpirationTime - returns the key expiration time
+
+
+ Version 2.6.4.7
+ Release date January 12 2014
+
+ Changes in package com.didisoft.pgp.inspect
+ [+] KeyStore.setKeystorePassword() - can be used to change the password of a file based KeyStore instance
+ [*] PGPLib.encryptX - as of version 2.6.3.0 of the library was expecting all private key passwords to be in UTF-8. 
+	In previous versions the library was working with non ASCII passwords as well and now keys with non ASCII passwords were rejected, although a valid password is supplied. This has been fixed and now the library is backward compatible.
+
+
+ Version 2.6.4.6
+ Release date December 10 2013
+
+ Changes in package com.didisoft.pgp.inspect
+ [+] PGPInspectLib.listSignatures - returns information for the signatures contained in an OpenPGP archive
+ [+] PGPInspectLib.listRevocationCertificate - returns information for the signature contained in an OpenPGP revocation certificate
+ [+] SignatureItem.getUserId() - returns signer User identifier if available
+ 
+
+ Version 2.6.4.5
+ Release date December 04 2013
+
+ Changes in package com.didisoft.pgp
+ [+] KeyStore.exportPubring() - exports all public keys in a pubring.pkr compatible format
+ [+] KeyStore.exportSecring() - exports all public keys in a secring.skr compatible format
+ [*] KeyStore.importKeyRing - fix for importing E-Business server pubring.pkr
+ [!] PGPLib - added additional logging messages
+ [+] KeyPairInformation.getEncryptionKeySize() - returns the size of the encryption key in bits
+
+
+ Version 2.6.4.4
+ Release date November 12 2013
+
+ Changes in package com.didisoft.pgp
+ [+] PGPLib.isTrialVersion() - Checks is this an evaluation instance of the library
+
+
+ Version 2.6.4.3
+ Release date November 07 2013
+
+ Changes in package com.didisoft.pgp
+ [+] KeyStore.setFastElGamalGeneration - sets should fast ElGamal parameters generation be performed
+ [+] KeyStore.isFastElGamalGeneration - returns will fast ElGamal parameters generation be performed (with less checks)
+ [*] KeyStore.containsPublicKey(String) - false was returned when a hexadecimal Key Id was supplied
+
+
+ Version 2.6.4.2
+ Release date November 04 2013
+
+ Changes in package com.didisoft.pgp
+ [+] KeyStore.generateRsaKeyPair - overloaded version that accepts key expiration in days
+ [+] KeyStore.generateElGamalKeyPair - overloaded version that accepts key expiration in days
+
+
+ Version 2.6.4.1
+ Release date October 22 2013
+
+ Changes in package com.didisoft.pgp
+ [+] KeyStore.importKeyRing(KeyPairInformation) - allow to import a KeyPairInformation object from another KeyStore
+ [+] KeyStore.importPublicKey(KeyPairInformation) - allow to import the public key component of a KeyPairInformation object from another KeyStore
+ [+] KeyStore.getMaxTrustDepth() - Retrieves the maximum depth of trust inheritance
+ [+] KeyStore.setMaxTrustDepth(int) - Sets the maximum depth of trust inheritance
+ [+] KeyStore.getMarginalsNeeded() - Retrieves how many signatures from marginally trusted keys are needed in order a key to be considered trusted.
+ [+] KeyStore.setMarginalsNeeded(int) - Sets how many signatures from marginally trusted keys are needed in order a key to be considered trusted
+
+
+
+ Version 2.6.3.4
+ Release date October 3 2013
+
+ Changes in package com.didisoft.pgp
+ [*] KeyStore.signPublicKey - fixed bug when signing multiple times with the same key.
+ It was adding the same signature multiple times. Now it is added only once.
+ [*] KeyStore.getKey(long) - fixed bug, it wasn' returning the key with ECC/OpenPGP keys.
+
+
+ Version 2.6.3.3
+ Release date September 19 2013
+
+ [+] added KeyPairInformation.getPreferredCompressions() - returns array of preferred compression algorithms
+ [+] added KeyPairInformation.getPreferredCiphers() - returns array of preferred cipher algorithms
+ [+] added KeyPairInformation.getPreferredHashes() - returns array of preferred hash algorithms
+ [+] added KeyPairInformation.getSignedWithKeyIds() - returns a list of the key Id's that have signed this key
+ [!]  When signing a public key with a private key multiple times,
+	the same signature was added also multiple times. This has been fixed and now
+	only one signature from a particular secret key will exists at any time.
+
+
+ Version 2.6.3.2
+ Release date August 19 2013
+
+ [!] Fixed bug in KeyStore.signPublicKeyAsTrustedIntroducer
+
+
+ Version 2.6.3.1
+ Release date August 16 2013
+
+ [!] Added additional cleanup logic in order to process verbose keys like the ones provided
+     by the Apache project (e.g. http://www.apache.org/dist/jackrabbit/KEYS)
+ 
+
+ Version 2.6.3.0
+ Release date August 07 2013
+
+ [!] The library has been migrated to the latest version of BouncyCastle provider 1.49.
+     It is by default compiled for JDK 5.
+     A backward compatible version that supports BC provier from bcprov-1.41 to bcprov-1.45
+     that is compiled for JDK 1.4 can be found in the Library/jdk14 folder.
+
+
+ Version 2.6.2.1
+ Release date July 23 2013
+
+ [+] Added logging message when loading the BouncyCastle provider. 
+
+
+ Version 2.6.2.0
+ Release date July 15 2013
+
+ [+] Added Elliptic Curve cryptography (ECC) OpenPGP support as defind in RFC 6637.
+ 
+ Changes in package com.didisoft.pgp
+ [+] Added interface EcCurve that contans constants with all the supported by OpenPGP EC curves
+ [+] Added constant Keyagorithm.EC - for Elliptic curve asymetric encryption
+ [+] Added method KeyStore.generateEccKeyPair - for generating OepnPGP keys based on Elliptic curve cryptography
+ [+] Added method KeyStore.generateElGamalKeyPair - for generating ElGamal (DH/DSS) OepnPGP keys with default algorithm preferences
+ [+] Added method KeyStore.generateRsaKeyPair - for generating RSA OepnPGP keys with default algorithm preferences
+ [+] Added method KeyStore.isSkipLucasLehmerPrimeTest() - returns will Lucas-Lehmer prime number check be skipped for ElGamal keys generation
+ [+] Added method KeyStore.setSkipLucasLehmerPrimeTest(boolean) - sets will Lucas-Lehmer prime number check be skipped for ElGamal keys generation
+ [+] Added method PGPKeyPair.generateEccKeyPair - for generating OepnPGP keys based on Elliptic curve cryptography
+ [+] Added method PGPKeyPair.generateElGamalKeyPair - for generating ElGamal (DH/DSS) OepnPGP keys with default algorithm preferences
+ [+] Added method PGPKeyPair.generateRsaKeyPair - for generating RSA OepnPGP keys with default algorithm preferences
+ 
+ 
+ Version 2.6.1.5
+ Release date: June 20 2013
+ 
+ Changes in package com.didisoft.pgp.inspect
+ [+] Added class SignatureItem - Contains information for an OpenPGP signature
+ [+] Added method PGPInspectLib.listDetachedSignatureFile - Lists information for an OpenPGP detached signature file
+ [+] Added method PGPInspectLib.listDetachedSignatureStream - Lists information for an OpenPGP detached signature stream
+
+
+ Version 2.6.1.4
+ Release date: May 20 2013
+ 
+ [*] Fixed KeyStore.containsPrivateKey(String) - when invoked with a hexadecimal key id parameter.
+     It was returning true, even if there was no private key with the given hexadecimal key id.
+
+	 
+ Version 2.6.1.3
+ Release date May 16 2013
+
+ Changes in package com.didisoft.pgp
+ [+] KeyStore.purge - Clears the internal state of this key store.
+ [+] KeyStore.addUserId - Appends an additional User Id signature to a key
+ [+] KeyStore.deleteUserId - Removes a user Id signature from a key
+ [+] KeyStore.changeUserId - Changes an existing user Id signature of a key
+ [+] KeyStore.changePrimaryUserId - Changes the primary (first) user Id signature of a key
+ [+] KeyPairInformation.getUserID - Returns the primary (first) user Id of a key
+
+
+ Version 2.6.1.2
+ Release date May 05 2013
+
+ [*] Improved the performance and memory footprint of the cleanup logic for corrupted ASCII armour keys.
+     It was causing a java.lang.OutOfMemoryError: Java heap space error in a web application environment with multiple concurrent connections.
+
+
+
+ Version 2.6.1.1
+ Release date April 10 2013
+
+ Changes in package com.didisoft.pgp
+ [!] improved cleanup logic for corrupted ASCII armour keys
+ 
+ [+] KeyStore.getKey(userId) - returns a KeyPairInformation for a key with a given User Id or Hexadecimal Key Id
+ [+] KeyStore.getKey(keyId) - returns a KeyPairInformation for a key with a given Key Id
+ [!] KeyStore.listKeys - now returns array of KeyPairInformation objects (same as getKeys())
+ 
+
+ Version 2.6.1.0
+ Release date February 05 2013
+ 
+ Changes in package com.didisoft.pgp
+ [+] interface ContentDataType - holds the posibilities content types for OpenPGP data
+ [+] PGPLib.getContentType() - returns the default content type that will be used when encrypting. 
+     The default is binary. Other posibilities are text and utf-8.
+ [+] PGPLib.setContentType(char) - sets the default content type that will be used when encrypting. 
+     The default is binary. Other posibilities are text and utf-8.
+ [*] PGPLib.clearSignString - fixed bug when signing multiple line messages.
+
+ KeyStore class general changes
+ [!] userId parameters are now searched by part of the User ID for example if a key has a User ID "Richard Collins"
+     the key can be located by only "Collins".
+ [!] the parameters that accept key User ID now also accept Key Hex ID string for example "74BB3286" or "0x74BB3286"
+
+ [*] Fixed importing large .pkr and .skr keyrings from PGP(r) 6.5 into a KeyStore object
+
+ [!] KeyStore(keystoreFile, password) - now if the keystore password is misspelled 
+     a com.didisoft.pgp.exceptions.WrongPasswordException is thrown.
+ [+] KeyStore.isPartialMatchUserIds() - returns is partial searching of User IDs turned on. The default is true.
+ [+] KeyStore.setPartialMatchUserIds(boolean) - turns on/off partial searching of User IDs.
+ [+] KeyStore.saveToStream - Saves the key store data to a stream unprotected with a password
+ [+] KeyStore.loadFromStream(keyStream) - loads the key store data from an unprotected stream
+ [+] KeyStore.loadFromStream(keyStream, password) - loads the key store data from a protected stream
+
+
+ Version 2.6.0.3
+ Release date December 12 2012
+ 
+ Changes in package com.didisoft.pgp
+ [+] KeyPairInformation.keyId2Hex - a method that converts a Key ID of type long to a hexadecimal string Key ID (used in PGP(r) and GnuPG/gpg)
+ [*] KeyStore.generateKeyPair - keys with expiration date are now recognized by Authora EDGE
+
+ Changes in package com.didisoft.pgp.inspect
+ [+] PGPInspectLib.isSignedOnly(InputStream)
+ [+] PGPInspectLib.listSigningKeyIds(InputStream)
+ [+] PGPInspectLib.isPublicKeyEncrypted(InputStream)
+ [+] PGPInspectLib.listEncryptionKeyIds(InputStream)
+ [+] PGPInspectLib.isPBEEncrypted(InputStream)
+ 
+ 
+ Version 2.6.0.2
+ Release date November 05 2012
+ 
+ Package com.didisoft.pgp
+ [*] KeyStore.generateKeyPair - fixed error when generating bigger than 1024 bit ELGAMAL keys
+
+
+ Version 2.6.0.1
+ Release date October 22 2012
+ 
+ Package com.didisoft.pgp
+ [*] PGPLib.signAndEncryptStream - encrypted output stream was not closed correctly in binary mode
+ 
+ Package com.didisoft.pgp.isnpect
+ [+] PGPInspectLib.listOpenPGPFile(String signedFileName) - lists the contents of a signed only file
+ [+] PGPInspectLib.listOpenPGPStream(InputStream) - lists the contents of a signed only stream 
+
+
+ Version 2.6.0
+ 
+ Release date October 08 2012
+ 
+ [!] PGPLib.encryptFile - throws additionally java.io.IOException
+ [!] PGPLib.encryptFilePBE - throws additionally java.io.IOException
+ [!] PGPLib.encryptStream - throws additionally java.io.IOException
+ [!] PGPLib.encryptStreamPBE - throws additionally java.io.IOException
+ 
+ [+] KeyStore.openInMemory - static constructor for creating an In-memory located KeyStore
+ [+] KeyStore.openFile - static constructor for creating a file based KeyStore
+ 
+ Note:
+ The migration guide from version 2.5.x to version 2.6.0 can be found in the Documentation.pdf file
+ that ships with the library. 
+
+
+
+ Version 2.5.9
+ 
+ Release date October 08 2012
+ 
+ [!] Fixed JavaDoc documentation for all com.didisoft.pgp.PGPLib methods
+ [+] Added additional debug java.logging messages
+ [+] Added new exception sub class com.didisoft.pgp.exceptions.FileIsPBEEncryptedException
+ 
+ [+] Added method KeyStore.getUsePrecomputedPrimes() - gets should precomputed prime numbers be used when generating ElGamal keys      
+ [+] Added method KeyStore.setUsePrecomputedPrimes() - sets should precomputed prime numbers be used when generating ElGamal keys
+
+
+
+ Version 2.5.8
+ 
+ Last Updated on July 11
+ 
+ [*] Fixed cleanup of FileCrypt eBusiness 3.7.2 keys	
+
+ Release date March 6, 2012
+
+ [+] Introduced Java logging on livel FINE for inspecting the internal work of the Library
+
+ [*] Fixed bug when creating an uncompressed one pass signed and yencrypted archive.
+ [!] Decripting methods now check the integrity protection of the data
+
+ [!] KeyStore.generateKeyPair now returns a KeyPairInformation instance representing the generated key
+ [!] KeyStore.importKeyRing now returns an array of KeyPairInformation instances representing the imported key
+ [!] KeyStore.importPublicKey now returns an array of KeyPairInformation instances representing the imported key
+ [!] KeyStore.importPrivateKey now returns an array of KeyPairInformation instances representing the imported key
+
+ [+] Added interface TrustLevel that holds constants for the most common trust values 
+
+ Added package com.didisoft.pgp.inspect 
+ [+] Added class com.didisoft.pgp.inspect.PGPInspectLib that provides methods for inspecting the content of OpenPGP data
+ [+] Added class com.didisoft.pgp.inspect.ContentItem that represents information for an item in an OpenPGP archive
+
+ Added methods for marking a public key as trusted introducer
+ [+] KeyStore.signPublicKeyAsTrustedIntroducer(long keyId, long signKeyId, String signPassword)
+ [+] KeyStore.signPublicKeyAsTrustedIntroducer(String keyUserId, String signKeyUserId, String signPassword)
+   
+ Added methods for explicitly setting the trust of a key located in a KeyStore
+ [+] KeyStore.setTrust(String keyUserId, byte trustValue)
+ [+] KeyStore.setTrust(long keyId, byte trustValue)
+
+ Added methods for checking the trust value of a given key
+ [+] KeyStore.isTrusted(String keyUserId)
+ [+] KeyStore.isTrusted(long keyId)
+ [+] KeyPairInformation.getTrust()
+
+
+
+ Version 2.5.7
+ August 25, 2011
+
+ [*] Fixed cleanup of half encrypted files after an exception for all methods. 
+ [*] Fixed bug when importing keys from PGP 6.5 into a KeyStore
+
+ [!] KeyStore.importPrivateKey now throws also NoPrivateKeyFoundException (extends PGPException) 
+	if the specified file does not contain a private key.
+
+ [+] Added method static KeyStore.checkPassword(keystoreFile, password) - checks is a given password for a keystore file correct.
+
+ [+] Added method PGPLib.decryptAndVerifyFileTo - decrypts a file content with its original name(s) into a folder
+ [+] Added method PGPLib.decryptAndVerifyStreamTo - decrypts a stream content with its original name(s) into a folder
+ [+] Added method PGPLib.setUseExpiredKeys(true) - switches on/off the check are the encryption keys expired
+ [+] Added method PGPLib.setUseRevokedKeys(true) - switches on/off the check are the encryption keys revoked
+ [+] Added method PGPLib.isUseExpiredKeys() - returns the state of the check are the encryption keys expired
+ [+] Added method PGPLib.isUseRevokedKeys() - returns the state of the check are the encryption keys revoked
+
+ [+] Added method KeyPairInformation.checkPassword(password) - checks if a password for a private key is correct.
+ [+] Added method KeyPairInformation.hasPrivateKey() - returns is there a private key in this key pair.
+ [+] Added method KeyPairInformation.isExpired() - indicates is the public key expired
+ [+] Added method KeyPairInformation.isExpiredOnDate(java.util.Date) - returns whether this key will be expired on a given date 	
+
+ New Exceptions:
+
+ [+] Added class com.didisoft.pgp.exceptions.NonPGPDataException (extends PGPException)  
+	thrown from all decrypt and decryptAndVerify methods when the supplied for decryption data is not an OpenPGP message. 
+
+ [+] Added class com.didisoft.pgp.exceptions.KeyIsExpiredException (extends PGPException)  
+	thrown from all encrypt and signAndEncrypt methods when the supplied public key is expired. 
+	Can be suppressed with PGPLib.setUseExpiredKeys(true)
+
+ [+] Added class com.didisoft.pgp.exceptions.KeyIsRevokedException (extends PGPException)  
+	thrown from all encrypt and signAndEncrypt methods when the supplied public key is revoked. 
+	Can be suppressed with PGPLib.setUseRevokedKeys(true)
+
+
+
+ Version 2.5.6
+ May 24, 2011
+
+ [+] pgplib.jar is now digitally signed!
+
+ [+] Added class PGPKeyPair extending KeyPairInformation that represents keys loaded from files and also 
+     provides methods for generating keys without the need of a KeyStore.
+
+ [+] Added KeyPairInformation.exportKeyRing
+ [+] Added KeyPairInformation.exportPrivateKey
+ [+] Added KeyPairInformation.exportPublicKey
+ [+] Added KeyPairInformation.exportPublicKey
+
+
+ [*] Fixed bug with openning empty key store file (for example created from a new temp file)
+
+
+
+ Version 2.5.5
+ March 28, 2011
+
+ New exceptions extending PGPException: 
+
+ [+] Package com.didisoft.pgp.exceptions - containing exceptions that extend org.bouncycastle.openpgp.PGPException
+ [+] Added class com.didisoft.pgp.exceptions.WrongPrivateKeyException - exception to indicate that we have supplied a wrong decryption private key
+ [+] Added class com.didisoft.pgp.exceptions.WrongPasswordException - exception to indicate that we have supplied a wrong password
+ [+] Added class com.didisoft.pgp.exceptions.NoPrivateKeyFoundException - exception to indicate that a private key has not been found
+ [+] Added class com.didisoft.pgp.exceptions.NoPublicKeyFoundException - exception to indicate that a public key has not been found
+ [+] Added class com.didisoft.pgp.exceptions.FileIsEncryptedException - exception to indicate that a file is encrypted
+
+ Multiple files encryption:
+
+ [+] Added method PGPLib.encryptFiles - for encryption of multiple files into a single OpenPGP file
+ [+] Added method PGPLib.decryptFileTo - decrypts multi file OpenPGP archive created with PGP Desktop 9+ into a folder
+ [+] Added method PGPLib.decryptStreamTo - decrypts multi file OpenPGP archive stream created with PGP Desktop 9+ into a folder
+
+ Decryption of password based encrypted (PBE) files:  
+
+ [+] Added method PGPLib.decryptFilePBE - to decrypt password encrypted PGP files. 
+
+ Changes:
+ [!] PGPLib.verifyStream - throws FileIsEncryptedException (extends PGPException) if the stream is aslo encrypted
+ [!] PGPLib.verifyFile - throws FileIsEncryptedException (extends PGPException) if the stream is aslo encrypted
+
+ [!] KeyStore is now Serializable
+ [!] KeyStore.exportPrivateKey - now throws NoPrivateKeyFoundException instead of PGPException
+ [!] KeyStore.exportPublicKey - now throws NoPublicKeyFoundException instead of PGPException
+ [+] Added method KeyStore.deletePrivateKey - deletes specified private key from the KeyStore
+ [+] Added method KeyStore.deletePublicKey - deletes specified public key from the KeyStore
+ [+] Added method KeyStore.containsPublicKey - returns true if a specified public key exists in this KeyStore
+ [+] Added method KeyStore.containsPrivateKey - returns true if a specified private key exists in this KeyStore
+
+ Bug fixes:
+
+ [*] PGPLib.verifyStream - now returns false if the supplied public key stream is not the matching this signed stream
+ [*] PGPLib.verifyFile - now returns false if the supplied public key stream is not the matching this signed stream
+ [*] PGPLib.decryptAndVerifyFile - now returns false if the supplied public key file is not the matching this signed file
+ [*] PGPLib.decryptAndVerifyStream - now returns false if the supplied public key file is not the matching this signed stream
+
+
+
+ Version 2.5.4
+ January 27, 2011
+
+ [+] Added sub class KeyPairInformation.SubKey - represents sub key in a key ring
+ [+] Added KeyPairInformation.isRevoked() - returns is this key pair revoked
+ [+] Added KeyPairInformation.isEncryptionKey() - returns can this key be used for encryption
+ [+] Added KeyPairInformation.isSigningKey() - returns can this key be used for signing 
+ [+] Added KeyPairInformation.getPublicSubKeys() - returns the public sub keys for this key pair
+ [+] Added KeyPairInformation.getPrivateSubKeys() - returns the private sub keys for this key pair
+
+ [+] Added KeyStore.containsKey(long keyId) - returns is there a key with the specified Key Id
+
+ [+] Added class RevocationLib that provides Key Revocation features
+
+
+
+ Version 2.5.3
+ November 30, 2010
+
+ [!] KeyPairInformation.getKeyIDHex() has been changed to display the same Hex string as GnuPG and PGP (r).
+ [+] Added KeyStore.getUserIds() - list of all User Id's of the keys in this KeyStore instance
+ [+] Added KeyStore.getKeyHexIds() - list of all Key Id's in Hex form of the keys in this KeyStore instance
+ [+] Added KeyStore.getKeyIdForUserId(userId) returns the first Key ID for a given User Id
+ [+] Added KeyStore. getKeyIdForKeyIdHex(keyIdHex) returns the first Key ID for a given Key Hex Id
+ [!] KeyStore.listKeys() is modified to print similar output as PGP (r) 6.5
+ [+] Added KeyStore.setAutoSave(boolean) should the KeyStore file be auto saved after each operation.
+ [+] Added KeyStore.isAutoSave() that returns the auto saved status.
+ [+] Added KeyStore.isBackupOnSave() that returns is backup file creation on.
+ [+] Added KeyStore.setBackupOnSave(boolean) that sets should the old status of KeyStore be saved in 
+     a file with the same name and extension .bak
+
+
+
+ Version 2.5.2
+ November 10, 2010
+
+ [+] Added methods PGPLib.encryptFile with support of KeyStore
+ [+] Added methods PGPLib.verifyFile with support of KeyStore
+ [+] Added methods PGPLib.verifyFile with support of KeyStore
+
+
+
+ Version 2.5.1
+ September 10, 2010
+
+ [+] Added interface CompressionAlgorithm with constants for available compression algorithms.
+ [+] Added interface HashAlgorithm with constants for available hashing algorithms.
+ [+] Added interface CypherAlgorithm with constants for available cypher compression algorithms.
+
+ [+] Added methods PGPLib.getCompression() and setCompression(int), 
+     that controls the used compression algorithm to be used during encryption.  
+
+ [+] Added methods PGPLib.getHash() and setHash(String), 
+     that controls the used hashing algorithm to be used during encryption.  
+
+ [+] Added methods PGPLib.getCypher() and setCypher(String), 
+     that controls the prefered symmetric cypher algorithm to be used during encryption.
+
+ [+] Added method KeyStore.importKeyRing, 
+     that imports both public and private key (if present) from one file.
+
+ [+] Added method KeyStore.exportKeyRing, 
+     that exports both public and private key (if present) in one file.
+
+ [+] Added method PGPLib.encryptFilePBE that makes the encrypted archive available for decryption 
+     with both private key and (if lost or not available) a pass phrase.
+
+ [*] Fixed error while deleting key pair from KeyStore, when only public key exists. 
+
+ [*] Fixed decryption of multi-recipient pgp files. 
+
+
+ Version 2.4.3
+ July 30, 2010
+
+ [!] Improved generation of 2048/1024 DH/DSS keys.
+ [+] Added method PGPLib.encryptStream that accepts Keys Store.
+
+ 
+ Version 2.4.2
+ May 16, 2010
+
+ [*] Fixed bug with storing private key in KeyStore after public key was imported.
+ [!] Documentation.pdf is transformed to html.
+
+
+ Version 2.4
+ March 21, 2010
+
+ [+] Added method PGPLib.clearSignVersion3 
+ [+] Added method PGPLib.clearSignString 
+ [+] Added method PGPLib.clearSignStringVersion3 
+ [+] Added method KeyStore.generateKeyPair with support for key expiration date
+ [!] Improved speed of methods working with large files.
+ [!] Switched to bcprov-ext-jdk14-145.jar
+ [!] verifyFile and verifyStream methods support clear signed format.
+
+
+ Version 2.32.1
+ March 5, 2010
+
+ [+] Added method clearSign 
+
+
+ Version 2.32
+ January 30, 2010
+
+ [!] Library JAR file is renamed to reflect the version number - for example current version is pgplib-2.32.jar 
+ [!] method PGPLib.verifyFile(String dataFileName, String publicKeyFileName) is deprecatad
+ [!] method PGPLib.verifyFile(InputStream dataFileStream, InputStream publicKeyStream) is deprecated
+ [+] Added method PGPLib.verifyFile(String dataFileName, String publicKeyFileName, String outputFileName)
+ [+] Added method PGPLib.verifyStream(InputStream dataFileStream, InputStream publicKeyStream, OutputStream ouputFileStream)
+ [+] Added method PGPLib.signAndEncryptStream(dataFileStream, internalFileName, keyStore, signUserId, privateKeyPassword, encUsedId, outputStream, asciiArmor, withIntegrityCheck)
+
+
+ Version 2.3.1
+ December 15, 2009
+
+ [+] Added method KeyStore.deleteKeyPair. 
+ [+] Added method KeyStore.changePrivateKeyPassword. 
+ [!] Method PGPLib.decryptAndVerifyFile now supports OpenPGP version 3 format (usually produced from PGP software version 2.x)
+ [+] Added method signAndEncryptFileVersion3  (Supports OpenPGP version 3 signature format)
+ [+] Added method signAndEncryptStreamVersion3  (Supports OpenPGP version 3 signature format)
+ [+] Added method signFileVersion3 (Supports OpenPGP version 3 signature format)  
+ [+] Added method signStreamVersion3 (Supports OpenPGP version 3 signature format)  
+
+
+ Version 2.2.2
+ November 15, 2009
+
+ [+] Added method KeyStore.exportPublicKey. 
+ [+] Added method KeyStore.exportPrivateKey. 
+ [+] Added method KeyStore.generateKeyPair.  
+ [!] Method KeyStore.importPrivateKey(String privateKeyFileName) is now deprecated.  
+ [+] Added method KeyStore.importPrivateKey(String privateKeyFileName, String password).  
+
+
+ Version 2.2.1
+ October 28, 2009
+
+ [!] Method importPublickKey made deprecated. 
+ [+] Method importPublicKey implemented. Should be used instead of importPublickKey.
+ [+] Method generateKeyPair implemented.  
+
+
+ Version 2.1.0
+ June 2, 2009
+
+ [+] Introduced Overloaded methods for encryption, decryption,
+     sign and encrypt, decrypt and verify without the need of keystore.
+
+
+ Version 2.0.0
+ April 8, 2009
+
+ [!] The Library is rewritten in Java, with no external dependencies. 
+     Uses BouncyCastle OpenPGP provider for the low level OpenPGP operations.
+
+
+ Version 1.0.0
+ January 12, 2009
+
+ [+] First version of the library. 
+     Wraps GnuPG command line utility, with methods for encryption, decryption, sign and encrypt, decrypt and verify.

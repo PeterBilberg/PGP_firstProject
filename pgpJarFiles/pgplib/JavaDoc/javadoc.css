@@ -1,0 +1,102 @@
+/* Javadoc style sheet */
+
+/* Define colors, fonts and other style attributes here to override the defaults */
+
+/* Page background color */
+html, body {
+    background-color: white;
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font: 10pt/1.4 "Verdana", "Bitstream Vera Sans", sans-seirf;
+    line-height: expression("1.39");
+    padding: 0.5em;
+}
+pre, code, tt {
+    font-size: 100%;
+    font-family: "Courier New", "Bitstream Vera Sans Mono", monospace;
+}
+td font code {
+    font-size: 90%;
+}
+table {
+    font-size: 100%;
+    line-height: inherit;
+    line-height: expression("1.39");
+    border-collapse: collapse;
+}
+table[cellspacing]:not([cellspacing="0"]) {
+    border-collapse: separate;
+}
+table, thead, tbody, tfoot, tr {
+    border: none;
+}
+
+.TableHeadingColor th,
+.TableHeadingColor td {
+    padding: 0.2em 0.4em;
+    border: 1px solid #707896;
+    font-family: "Arial", sans-serif;
+}
+.TableSubHeadingColor th,
+.TableSubHeadingColor td {
+    padding: 0.2em 0.4em;
+    border: 1px solid #E5E9F0;
+    font-family: "Arial", sans-serif;
+}
+.TableRowColor th,
+.TableRowColor td {
+    padding: 0.2em 0.4em;
+    border: 1px solid silver;
+}
+
+.TableHeadingColor * th,
+.TableHeadingColor * td,
+.TableSubHeadingColor * th,
+.TableSubHeadingColor * td,
+.TableRowColor * th,
+.TableRowColor * td {
+    border: none;
+}
+
+.TableHeadingColor font { font-size: 140%; }
+.TableSubHeadingColor { font-size: 120%; }
+
+/* Headings */
+h1 { font-size: 160%; font-family: "Arial", sans-serif; color: #4A526F; }
+h2 { font-size: 160%; font-family: "Arial", sans-serif; color: #4A526F; }
+h3 { font-size: 120%; font-family: "Arial", sans-serif; color: #4A526F; }
+
+/* Table colors */
+.TableHeadingColor     { background: #707896; }
+.TableSubHeadingColor  { background: #E5E9F0; }
+.TableRowColor         { background: #FFFFFF; }
+.TableHeadingColor, .TableHeadingColor * { color: white; }
+.TableSubHeadingColor, .TableSubHeadingColor * { color: #777E95; }
+
+/* Font used in left-hand frame lists */
+/*
+.FrameTitleFont   { font-size: 100%; font-family: Helvetica, Arial, sans-serif }
+.FrameHeadingFont { font-size:  90%; font-family: Helvetica, Arial, sans-serif }
+.FrameItemFont    { font-size:  90%; font-family: Helvetica, Arial, sans-serif }
+*/
+
+/* Navigation bar fonts and colors */
+.NavBarCell1    { background-color: #707896; }
+.NavBarCell1 *  { color: white; }
+.NavBarCell1Rev { background-color: #2F966F; }
+.NavBarFont1    { color: white; }
+.NavBarFont1Rev { color: #EFEFEF; }
+
+.NavBarCell2    { background-color: #D4D6DF; color: #323D62; }
+.NavBarCell3    { background-color: #D4D6DF; color: #323D62; }
+.NavBarCell2 *, .NavBarCell3 * { color: #323D62; }
+
+a:visited:focus, a:visited:focus *,
+a:visited:hover, a:visited:hover *,
+a:link:focus, a:link:focus *,
+a:link:hover, a:link:hover * { color: #FF962F; }
+a:visited:active, a:visited:active *,
+a:link:active, a:link:active * { color: red; }
